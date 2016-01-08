@@ -154,8 +154,16 @@ def all_students_tuple_list(filename):
                 # ...
             ]
     """
-
+    students = open(filename)
     student_list = []
+    for student in students:
+        student_information = student.split("|")
+        if student_information[4].rstrip() == "I" or student_information[4].rstrip() == "TA":
+            continue 
+            
+        student_list.append(student_information)
+
+    print student_list 
 
     # Code goes here
 
@@ -222,4 +230,4 @@ def find_house_members_by_student_name(student_list):
 # print find_name_duplicates("cohort_data.txt")
 # find_house_members_by_student_name(all_students_data)
 
-students_by_house("cohort_data.txt")
+all_students_tuple_list("cohort_data.txt")
