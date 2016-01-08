@@ -112,17 +112,18 @@ def students_by_house(filename):
     for line in students_by_house:
         student = line.split("|")
         last_name = student[1]
-        if student[2].rstrip() == "Gryffindor":
+        house = student[2].rstrip()
+        if house == "Gryffindor":
             gryffindor.append(last_name)
-        elif student[2].rstrip() == "Hufflepuff":
+        elif house == "Hufflepuff":
             hufflepuff.append(last_name)
-        elif student[2].rstrip() == "Slytherin":
+        elif house == "Slytherin":
             slytherin.append(last_name)
-        elif student[2].rstrip() == "Dumbledore's Army":
+        elif house == "Dumbledore's Army":
             dumbledores_army.append(last_name)
-        elif student[2].rstrip() == "Ravenclaw":
+        elif house == "Ravenclaw":
             ravenclaw.append(last_name)
-        elif student[2].rstrip() == "Order of the Phoenix":
+        elif house == "Order of the Phoenix":
             order_of_the_phoenix.append(last_name)
         elif student[4].rstrip() =="TA":
             tas.append(last_name)
@@ -160,7 +161,7 @@ def all_students_tuple_list(filename):
         student_information = student.split("|")
         if student_information[4].rstrip() == "I" or student_information[4].rstrip() == "TA":
             continue 
-            
+
         student_list.append(student_information)
 
     print student_list 
@@ -230,4 +231,4 @@ def find_house_members_by_student_name(student_list):
 # print find_name_duplicates("cohort_data.txt")
 # find_house_members_by_student_name(all_students_data)
 
-all_students_tuple_list("cohort_data.txt")
+students_by_house("cohort_data.txt")
