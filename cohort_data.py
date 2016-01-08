@@ -108,7 +108,37 @@ def students_by_house(filename):
     tas = []
     instructors = []
 
-    # Code goes here
+    students_by_house = open(filename)
+    for line in students_by_house:
+        student = line.split("|")
+        last_name = student[1]
+        if student[2].rstrip() == "Gryffindor":
+            gryffindor.append(last_name)
+        elif student[2].rstrip() == "Hufflepuff":
+            hufflepuff.append(last_name)
+        elif student[2].rstrip() == "Slytherin":
+            slytherin.append(last_name)
+        elif student[2].rstrip() == "Dumbledore's Army":
+            dumbledores_army.append(last_name)
+        elif student[2].rstrip() == "Ravenclaw":
+            ravenclaw.append(last_name)
+        elif student[2].rstrip() == "Order of the Phoenix":
+            order_of_the_phoenix.append(last_name)
+        elif student[4].rstrip() =="TA":
+            tas.append(last_name)
+        elif student[4].rstrip() == "I":
+            instructors.append(last_name)
+
+    all_students.append(gryffindor)
+    all_students.append(hufflepuff)
+    all_students.append(slytherin)
+    all_students.append(dumbledores_army)
+    all_students.append(order_of_the_phoenix)
+    all_students.append(ravenclaw)
+    all_students.append(tas)
+    all_students.append(instructors)
+
+    print all_students
 
     return all_students
 
@@ -192,4 +222,4 @@ def find_house_members_by_student_name(student_list):
 # print find_name_duplicates("cohort_data.txt")
 # find_house_members_by_student_name(all_students_data)
 
-sort_by_cohort("cohort_data.txt")
+students_by_house("cohort_data.txt")
