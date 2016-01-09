@@ -30,7 +30,7 @@ def unique_houses(filename):
 
 
 def sort_by_cohort(filename):
-    """TODO: Sort students by cohort.
+    """TODO: Sort students by cohortself.
 
     Iterates over the data to create a list for each cohort, ordering students
     alphabetically by first name and tas separately. Returns list of lists.
@@ -164,7 +164,7 @@ def all_students_tuple_list(filename):
 
         student_list.append(student_information)
 
-    print student_list 
+#    print student_list 
 
     # Code goes here
 
@@ -179,6 +179,23 @@ def find_cohort_by_student_name(student_list):
     'Student not found.' when appropriate. """
 
     # Code goes here
+    student_data = all_students_tuple_list("cohort_data.txt")
+    #print student_data
+    #print "****************"
+    for s_list in student_data:
+    #    print s_list 
+        if student_list[0] == s_list[0]:
+            return s_list[4].rstrip()
+    # user_input = raw_input("Enter a first and last name: ")
+
+    # # first_name = student_list[0]
+    # # last_name  = student_list[1]
+    # # cohort = student_list[4]
+    # student_info = open("cohort_data.txt")
+
+
+
+
 
     return "Student not found."
 
@@ -199,10 +216,19 @@ def find_name_duplicates(filename):
     """
 
     duplicate_names = set()
+    student_list = []
+    students = open(filename)
+    for student in students:
+        student_information = student.split("|") #["Peggy", "Zheng", ]\
+        first_name = student_information[0]
+        student_list.append(first_name)
 
-    # Code goes here
+    for i in range(1, len(student_list)-1):
+        if student_list[i] == student_list[i+1]:
+            # print student_list[i]
+            duplicate_names.add(student_list[i])
 
-    return duplicate_names
+    print duplicate_names
 
 
 def find_house_members_by_student_name(student_list):
@@ -231,4 +257,6 @@ def find_house_members_by_student_name(student_list):
 # print find_name_duplicates("cohort_data.txt")
 # find_house_members_by_student_name(all_students_data)
 
-students_by_house("cohort_data.txt")
+#students_by_house("cohort_data.txt")
+
+find_name_duplicates("cohort_data.txt")
